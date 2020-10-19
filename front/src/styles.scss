@@ -1,0 +1,75 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$skeleton-primary: mat-palette($mat-indigo);
+$skeleton-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$skeleton-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$skeleton-theme: mat-light-theme($skeleton-primary, $skeleton-accent, $skeleton-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($skeleton-theme);
+
+@import 'themes';
+
+@import '~@nebular/theme/styles/globals';
+
+@include nb-install() {
+  @include nb-theme-global();
+};
+
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import "../node_modules/flatpickr/dist/flatpickr.css";
+
+app-header {
+  width: 100%;
+}
+
+.nb-theme-default ng2-smart-table .ng2-smart-actions a.ng2-smart-action {
+  font-size: 1rem !important;
+}
+
+::-webkit-scrollbar {
+  width: 0.3125rem;
+  height: 0.3125rem;
+}
+::-webkit-scrollbar-thumb {
+  background: #e4e9f2;
+  cursor: pointer;
+  border-radius: 0.15625rem;
+}
+::-webkit-scrollbar-track {
+  background: #f7f9fc;
+}
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// mat-dialog-container#modal-component {
+//   background: linear-gradient(45deg, rgba(58, 0, 85, 0.9) 0%, rgba(165, 0, 202, 1) 33%, rgba(209, 0, 181, 1) 60%, rgba(216, 3, 84, 1) 100%);
+// }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="90mm"
+   height="16mm"
+   viewBox="0 0 90 16"
+   version="1.1"
+   id="svg66"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="Pago_Unitario.svg">
+  <defs
+     id="defs60">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1079">
+      <stop
+         style="stop-color:#dc0882;stop-opacity:1"
+         offset="0"
+         id="stop1075" />
+      <stop
+         style="stop-color:#780096;stop-opacity:1"
+         offset="1"
+         id="stop1077" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1079"
+       id="linearGradient1081-5-4-2"
+       x1="46.772171"
+       y1="8.2185383"
+       x2="46.638531"
+       y2="18.241146"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.3289267,0,0,1.0103741,-13.680982,-5.8059109)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1079"
+       id="linearGradient1091-8-3-8"
+       x1="22.802332"
+       y1="27.227945"
+       x2="22.98518"
+       y2="42.028137"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0103741,0,0,1.0411245,-14.852329,-27.826091)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="199.44871"
+     inkscape:cy="99.630227"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata63">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:url(#linearGradient1081-5-4-2);fill-opacity:1;fill-rule:evenodd;stroke-width:0.29104"
+       id="rect248-3-3-5"
+       width="81.869362"
+       height="11.206751"
+       x="8.1626902"
+       y="2.025317"
+       ry="2.34323"
+       inkscape:export-xdpi="96.029831"
+       inkscape:export-ydpi="96.029831" />
+    <ellipse
+       style="opacity:1;fill:url(#linearGradient1091-8-3-8);fill-opacity:1;stroke-width:0.271365"
+       id="path1083-5-9-5"
+       cx="8.0337572"
+       cy="8"
+       rx="8.0337572"
+       ry="8"
+       inkscape:export-xdpi="96.029831"
+       inkscape:export-ydpi="96.029831" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.99014px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.267328"
+       x="32.482693"
+       y="9.0964098"
+       id="text1154-8-1-6"
+       inkscape:export-xdpi="96.029831"
+       inkscape:export-ydpi="96.029831"><tspan
+         sodipodi:role="line"
+         id="tspan1152-1-5-5"
+         x="32.482693"
+         y="9.0964098"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.703px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';fill:#ffffff;fill-opacity:1;stroke-width:0.267328">Pago Unitario</tspan></text>
+    <path
+       id="path138"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.0337729"
+       d="m 10.438428,10.974215 c 0.08517,-0.01639 0.157942,-0.06183 0.209682,-0.125038 0.05234,-0.06559 0.08214,-0.143827 0.08214,-0.23026 0,-0.07961 -0.02435,-0.14519 -0.06971,-0.202927 -0.04436,-0.05773 -0.120174,-0.09873 -0.22203,-0.13153 z M 10.188714,9.102089 c -0.0685,0.024593 -0.120588,0.061835 -0.162265,0.1192322 -0.036374,0.059107 -0.056177,0.1192312 -0.056177,0.1868707 0,0.061158 0.015964,0.1192312 0.051832,0.1725234 0.03637,0.053984 0.09376,0.096339 0.1666,0.1274345 z m 0,1.843431 V 10.209992 C 9.9636639,10.143044 9.8010745,10.044303 9.6955611,9.9127758 9.5906742,9.7795347 9.5389834,9.6193177 9.5389834,9.4286884 c 0,-0.1896038 0.059713,-0.3556375 0.1766235,-0.4827214 C 9.8374075,8.812726 9.9900346,8.7399659 10.188714,8.7181014 V 8.545578 h 0.249714 v 0.1725234 c 0.181635,0.024593 0.327867,0.086438 0.436381,0.1947274 0.108806,0.1028237 0.178289,0.2428969 0.206671,0.4198609 l -0.435703,0.054651 C 10.620114,9.2503543 10.548377,9.1557156 10.438428,9.1078896 V 9.795929 c 0.275448,0.075495 0.464762,0.1728639 0.564919,0.293801 0.09791,0.120248 0.150587,0.27706 0.150587,0.467689 0,0.209761 -0.06466,0.388091 -0.190648,0.536016 -0.124507,0.145191 -0.302818,0.236065 -0.524858,0.267153 V 11.69436 H 10.188714 V 11.366396 C 9.9900346,11.341804 9.829466,11.268016 9.7085949,11.144679 9.5830054,11.015546 9.5062675,10.838239 9.4705407,10.610714 l 0.4473936,-0.05329 c 0.015661,0.09463 0.052337,0.171497 0.1005327,0.242898 0.05234,0.06696 0.109887,0.116501 0.170276,0.145191 z M 10.61205,6.9324077 H 4.9024769 V 6.345829 H 10.61205 Z m 0,1.1700778 H 4.9024769 V 7.5152248 H 10.61205 Z M 6.045999,4.0118224 H 9.4705407 V 5.1801917 H 6.045999 Z M 3.7639682,2.8431116 v 7.8858144 c 0,0.807271 0.6373742,1.458756 1.4259712,1.458756 0.3225215,0 0.6190158,-0.105568 0.8560596,-0.293118 0.2377107,0.187555 0.5375382,0.293118 0.8553827,0.293118 0.3241886,0 0.6173386,-0.105568 0.856383,-0.293118 0.2380542,0.187555 0.5372058,0.293118 0.8557262,0.293118 0.3235117,0 0.6183277,-0.105568 0.8570498,-0.293118 0.2380542,0.187555 0.5358723,0.293118 0.8547143,0.293118 0.788275,0 1.430317,-0.651485 1.430317,-1.458756 V 2.8431116 H 3.7639682"
+       inkscape:export-xdpi="96.029831"
+       inkscape:export-ydpi="96.029831" />
+  </g>
+</svg>

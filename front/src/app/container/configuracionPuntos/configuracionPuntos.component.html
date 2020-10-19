@@ -1,0 +1,617 @@
+<div [ngSwitch]="data.tipo">
+
+    <form (submit)="submit()" [formGroup]="bonosForm">
+        <nb-card *ngSwitchCase="'BonoMax'" class="container1" [nbSpinner]="load" nbSpinnerStatus="primary">
+            <nb-card-body>
+                <label class="tituloPrincipal">Configuración Base Bono</label>
+                <label class="tituloSecundario">{{Titulo}}</label>
+                <div class="col-md-12">
+                    <div class=" row">
+                        <label for="Bono" class="titulosBonos">Base Bono</label>
+                        <div class="col-md-6">
+                            <input nbTooltip="Ingresa el valor del bono sin puntos ni comas Ej: 100000"
+                                nbTooltipStatus="primary" nbInput id="Bono" type="number" class="cajas"
+                                placeholder="Base Bono" fullWidth formControlName="bonoMax" [disabled]="listBonoMax"
+                                [ngClass]="{'status-danger': bonoMax.invalid && (bonoMax.dirty || bonoMax.touched),'status-success': bonoMax.valid}">
+                            <div *ngIf="bonoMax.invalid && (bonoMax.dirty || bonoMax.touched)" class="text-danger">
+                                <div *ngIf="bonoMax.errors.pattern">
+                                    El valor debe ser mayor a 0
+                                </div>
+                                <div *ngIf="bonoMax.errors.max">
+                                    El bono no puede ser mayor a $1.000.000
+                                </div>
+                                <div *ngIf="bonoMax.errors.min">
+                                    El bono no puede ser menor $250.000
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="margin-top: 10px;">
+                            <button nbButton [disabled]="bonosForm.invalid" (click)="addBonoMax()">
+                                <nb-icon icon="plus-circle" class="icon"></nb-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped-table1">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Base Bono</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let i of listBonoMax">
+                                    <tr>
+                                        <td>{{i.BonoMax | currency}}</td>
+                                        <td>
+                                            <nb-icon icon="trash" class="icon" (click)="deleteBonoMax(i)"></nb-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <button id="btnClose" name="Cerrar" nbButton class="btnButton" (click)="close()">Cerrar</button>
+                    <button id="btnSave" name="Guardar" nbButton class="btnButton" (click)="saveTotalBonos()"
+                        [disabled]="bonosForm.invalid">Guardar</button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </form>
+
+    <form (submit)="submit()" [formGroup]="gateWaysForm">
+        <nb-card *ngSwitchCase="'GateWays'" class="container2" [nbSpinner]="load" nbSpinnerStatus="primary">
+            <nb-card-body>
+                <label class="tituloPrincipalB">Configuración Llave de Acceso</label>
+                <label class="tituloSecundarioB">{{Titulo}}</label>
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="kpi" class="titulosGateWays">KPI</label>
+                                <nb-select name="kpi" placeholder="Selección KPI" class="cajas"
+                                    formControlName="kpiSeleccionado" formControlName="kpiSeleccionado">
+                                    <nb-option *ngFor="let k of listKpiName " [value]="k.IdKpi">
+                                        {{k.KPI_Name}}
+                                    </nb-option>
+                                </nb-select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="targetKpi" class="titulosGateWays">Meta KPI</label>
+                                <input
+                                    nbTooltip="Meta KPI puede ser un valor entero o decimal. El valor decimal va separado con un punto Ejem: 95 ó 95.5"
+                                    nbTooltipStatus="primary" nbInput name="targetKpi" type="number" class="cajas"
+                                    placeholder="Meta KPI" formControlName="metaKpi"
+                                    [ngClass]="{'status-danger': metaKpi.invalid && (metaKpi.dirty || metaKpi.touched),'status-success': metaKpi.valid}">
+                                <div *ngIf="metaKpi.invalid && (metaKpi.dirty || metaKpi.touched)" class="text-danger">
+                                    <div *ngIf="metaKpi.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="share" class="titulosGateWays">Desempeño(%)</label>
+                                <input
+                                    nbTooltip="Desempeño puede ser un valor entero o decimal. El valor decimal va separado con un punto Ejem: 95 ó 95.5"
+                                    nbTooltipStatus="primary" name="share" type="number" class="cajas" nbInput
+                                    placeholder="Desempeño" formControlName="desempeno"
+                                    [ngClass]="{'status-danger': desempeno.invalid && (desempeno.dirty || desempeno.touched),'status-success': desempeno.valid}">
+                                <div *ngIf="desempeno.invalid && (desempeno.dirty || desempeno.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="desempeno.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1" style="margin-top: 55px;">
+                                <button nbButton [disabled]="gateWaysForm.invalid" (click)="addGateWays()">
+                                    <nb-icon icon="plus-circle" class="icon"></nb-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <table class="table table-striped-table2">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">KPI</th>
+                                        <th scope="col">Meta KPI</th>
+                                        <th scope="col">Desempeño</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let i of listGateWays">
+                                    <tr>
+                                        <td>{{i.nameKpi}}</td>
+                                        <td>{{i.TargetKPI}}</td>
+                                        <td>{{i.Share/100 | percent}}</td>
+                                        <td>
+                                            <nb-icon icon="trash" class="icon" (click)="deleteGateWay(i)"></nb-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <button id="btnClose" name="Cerrar" nbButton
+                        style="margin-left: 10px; margin-right: 205px;margin-top:30px; margin-bottom:5px; float: right;width: 100px;height: 45px;"
+                        (click)="close()">Cerrar</button>
+                    <button id="btnSave" name="Guardar" nbButton
+                        style="float: right; margin-top:30px; margin-right:10px; margin-left:10px; margin-bottom:5px;width: 100px;height: 45px;"
+                        (click)="saveTotalGateWays()" [disabled]="gateWaysForm.invalid">Guardar</button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </form>
+
+    <form (submit)="submit()" [formGroup]="umbralesForm">
+        <nb-card *ngSwitchCase="'ThresHold'" class="container3" [nbSpinner]="load" nbSpinnerStatus="primary">
+            <nb-card-body>
+                <label class="tituloPrincipal">Configuración Umbrales</label>
+                <label class="tituloSecundario">{{Titulo}}</label>
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="kpi" class="titulosThresHolds">KPI</label>
+                                <nb-select id="kpi" name="kpi" placeholder="Selección KPI" class="cajas"
+                                    formControlName="kpiSeleccionadoHolds1">
+                                    <nb-option *ngFor="let k of listKpiName " [value]="k.IdKpi">
+                                        {{k.KPI_Name}}
+                                    </nb-option>
+                                </nb-select>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="participation" class="titulosThresHolds">Participación KPI</label>
+                                <input nbInput name="participation" id="participation" type="number" class="cajas"
+                                    placeholder="Participación" formControlName="participationHolds1"
+                                    nbTooltip="Participación puede ser un valor entero o decimal. El valor decimal va separado con un punto Ejem: 95 ó 95.5"
+                                    nbTooltipStatus="primary"
+                                    [ngClass]="{'status-danger': participationHolds1.invalid && (participationHolds1.dirty || participationHolds1.touched),'status-success': participationHolds1.valid}">
+                                <div *ngIf="participationHolds1.invalid && (participationHolds1.dirty || participationHolds1.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="participationHolds1.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1" style="margin-top: 65px;">
+                                <button nbButton (click)="addThresHold1()">
+                                    <nb-icon icon="plus-circle" class="icon"></nb-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <table class="table table-striped-table3">
+                                <thead>
+                                    <tr>
+                                        <th>KPI</th>
+                                        <th>Participacion</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let i of listThresHold1">
+                                    <tr>
+                                        <td>{{i.nameKpi}}</td>
+                                        <td>{{i.Participation1/100 | percent}}</td>
+                                        <td>
+                                            <nb-icon icon="trash" class="icon" (click)="deleteThresHold1(i)">
+                                            </nb-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12"><br></div>
+                    <div class="col-md-12"><br></div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="kpi" class="titulosThresHolds">KPI</label>
+                                <nb-select name="kpi" placeholder="Selección Kpi" class="cajas"
+                                    formControlName="kpiSeleccionadoHolds2">
+                                    <nb-option *ngFor="let k of listKpiName " [value]="k.IdKpi">
+                                        {{k.KPI_Name}}
+                                    </nb-option>
+                                </nb-select>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="start" class="titulosThresHolds">Inicio</label>
+                                <input nbInput name="start" type="number" class="cajas" placeholder="Inicio"
+                                    formControlName="inicioHold"
+                                    nbTooltip="Inicio puede ser un valor entero o decimal. El valor decimal va separado con un punto Ejem: 95 ó 95.5"
+                                    nbTooltipStatus="primary"
+                                    [ngClass]="{'status-danger': inicioHold.invalid && (inicioHold.dirty || inicioHold.touched),'status-success': inicioHold.valid}">
+                                <div *ngIf="inicioHold.invalid && (inicioHold.dirty || inicioHold.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="inicioHold.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="end" class="titulosThresHolds">Fin</label>
+                                <input nbInput name="end" type="number" class="cajas" placeholder="Fin"
+                                    nbTooltip="Fin puede ser un valor entero o decimal. El valor decimal va separado con un punto Ejem: 95 ó 95.5"
+                                    nbTooltipStatus="primary" formControlName="finHold"
+                                    [ngClass]="{'status-danger': finHold.invalid && (finHold.dirty || finHold.touched),'status-success': finHold.valid}">
+                                <div *ngIf="finHold.invalid && (finHold.dirty || finHold.touched)" class="text-danger">
+                                    <div *ngIf="finHold.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="participation" class="titulosThresHolds">Participación KPI</label>
+                                <input nbInput name="participation" type="number" class="cajas"
+                                    nbTooltip="Participación puede ser un valor entero o decimal. El valor decimal va separado con un punto Ejem: 95 ó 95.5"
+                                    nbTooltipStatus="primary" placeholder="Participación"
+                                    formControlName="participationHolds2" [ngClass]="{'status-danger': participationHolds2.invalid && (participationHolds2.dirty ||
+                            participationHolds2.touched),'status-success': participationHolds2.valid}">
+                                <div *ngIf="participationHolds2.invalid && (participationHolds2.dirty || participationHolds2.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="participationHolds2.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1" style="margin-top: 65px;">
+                                <button nbButton (click)=" addThresHold2()">
+                                    <nb-icon icon="plus-circle"></nb-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <table class="table table-striped-table4">
+                                <thead>
+                                    <tr>
+                                        <th>KPI</th>
+                                        <th>Inicio</th>
+                                        <th>Fin</th>
+                                        <th>Participación</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let j of listThresHold2">
+                                    <tr>
+                                        <td>{{j.nameKpi}}</td>
+                                        <td>{{j.Start}}</td>
+                                        <td>{{j.End}}</td>
+                                        <td>{{j.Participation2/100 | percent}}</td>
+                                        <td>
+                                            <nb-icon icon="trash" class="icon" (click)="deleteThresHold2(j)">
+                                            </nb-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <button id="btnClose" name="Cerrar" nbButton class="btnButton" (click)="close()">Cerrar</button>
+                    <button id="btnSave" name="Guardar" nbButton class="btnButton" (click)="saveTotalThresHolds()"
+                        [disabled]="umbralesForm.invalid">Guardar</button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </form>
+
+    <form (submit)="submit()" [formGroup]="modifiersForm">
+        <nb-card *ngSwitchCase="'Modifiers'" class="container4" [nbSpinner]="load" nbSpinnerStatus="primary">
+            <nb-card-body>
+                <label class="tituloPrincipal">Configuración Modificadores</label>
+                <label class="tituloSecundario">{{Titulo}}</label>
+                <div class="col-md-12">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <label for="kpi" class="titulosModifiers">KPI</label>
+                            <nb-select name="kpi" placeholder="Selección KPI" class="cajas"
+                                formControlName="kpiSeleccionadoMod">
+                                <nb-option *ngFor="let k of listKpiName " [value]="k.IdKpi">
+                                    {{k.KPI_Name}}
+                                </nb-option>
+                            </nb-select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="start" class="titulosModifiers">Inicio</label>
+                            <input nbInput name="start" id="start" type="number" class="cajas" placeholder="Inicio"
+                                formControlName="inicioMod"
+                                [ngClass]="{'status-danger': inicioMod.invalid && (inicioMod.dirty || inicioMod.touched),'status-success': inicioMod.valid}">
+                            <div *ngIf="inicioMod.invalid && (inicioMod.dirty || inicioMod.touched)"
+                                class="text-danger">
+                                <div *ngIf="inicioMod.errors.pattern">
+                                    Valor no válido
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="end" class="titulosModifiers">Fin</label>
+                            <input nbInput name="end" id="end" type="number" class="cajas" placeholder="Fin"
+                                formControlName="finMod"
+                                [ngClass]="{'status-danger': finMod.invalid && (finMod.dirty || finMod.touched),'status-success': finMod.valid}">
+                            <div *ngIf="finMod.invalid && (finMod.dirty || finMod.touched)" class="text-danger"
+                                ngDefaultControl>
+                                <div *ngIf="finMod.errors.pattern">
+                                    Valor no válido
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="porcentaje" class="titulosModifiers">Porcentaje Incremento</label>
+                            <input nbInput name="porcentaje" id="porcentaje" type="number" class="cajas"
+                                placeholder="Porcentaje Incremento" formControlName="porcIncrementoMod"
+                                [ngClass]="{'status-danger': porcIncrementoMod.invalid && (porcIncrementoMod.dirty || porcIncrementoMod.touched),'status-success': porcIncrementoMod.valid}">
+                            <div *ngIf="porcIncrementoMod.invalid && (porcIncrementoMod.dirty || porcIncrementoMod.touched)"
+                                class="text-danger">
+                                <div *ngIf="porcIncrementoMod.errors.pattern">
+                                    Valor no válido
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="valor" class="titulosModifiers">Valor Incremento</label>
+                            <input nbInput name="valor" id="valor" type="number" class="cajas"
+                                placeholder="Valor Incremento" formControlName="valIncrementoMod"
+                                [disabled]="dValorIncremento"
+                                [ngClass]="{'status-danger': valIncrementoMod.invalid && (valIncrementoMod.dirty || valIncrementoMod.touched),'status-success': valIncrementoMod.valid}">
+                            <div *ngIf="valIncrementoMod.invalid && (valIncrementoMod.dirty || valIncrementoMod.touched)"
+                                class="text-danger">
+                                <div *ngIf="valIncrementoMod.errors.pattern">
+                                    Valor no válido
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1" style="margin-top: 65px;">
+                            <button nbButton (click)="addModifiers()" [disabled]="modifiersForm.invalid">
+                                <nb-icon icon="plus-circle" class="icon"></nb-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped-table5">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">KPI Name</th>
+                                        <th scope="col">Start</th>
+                                        <th scope="col">End</th>
+                                        <th scope="col">Porcentaje Incremento</th>
+                                        <th scope="col">Valor Incremento</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let i of listModifiers">
+                                    <tr>
+                                        <td>{{i.nameKpi}}</td>
+                                        <td>{{i.Start}}</td>
+                                        <td>{{i.End}}</td>
+                                        <td>{{i.porcentajeIncremento/100 | percent}}</td>
+                                        <td>{{i.valorIncremento | currency}}</td>
+                                        <td>
+                                            <nb-icon icon="trash" class="icon" (click)="deleteModifiers(i)"></nb-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <button id="btnClose" name="Cerrar" nbButton class="btnButton" (click)="close()">Cerrar</button>
+                    <button id="btnSave" name="Guardar" nbButton class="btnButton" (click)="saveTotalModifiers()"
+                        [disabled]="modifiersForm.invalid">Guardar</button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </form>
+
+    <form (submit)="submit()" [formGroup]="globalModifiersForm">
+        <nb-card *ngSwitchCase="'GlobalModifiers'" class="container5" [nbSpinner]="load" nbSpinnerStatus="primary">
+            <nb-card-body>
+                <label class="tituloPrincipalB">Configuración Modificadores Globales</label>
+                <label class="tituloSecundarioB">{{Titulo}}</label>
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="kpi" class="titulosGModifiers">KPI</label>
+                                <nb-select name="kpi" placeholder="Selección KPI" class="cajas"
+                                    formControlName="kpiSeleccionadoGlob">
+                                    <nb-option *ngFor="let k of listKpiName " [value]="k.IdKpi">
+                                        {{k.KPI_Name}}
+                                    </nb-option>
+                                </nb-select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="start" class="titulosGModifiers">Inicio</label>
+                                <input nbInput name="start" type="number" class="cajas" placeholder="Inicio"
+                                    formControlName="inicioGlob"
+                                    [ngClass]="{'status-danger': inicioGlob.invalid && (inicioGlob.dirty || inicioGlob.touched),'status-success': inicioGlob.valid}">
+                                <div *ngIf="inicioGlob.invalid && (inicioGlob.dirty || inicioGlob.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="inicioGlob.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="end" class="titulosGModifiers">Fin</label>
+                                <input nbInput name="end" type="number" class="cajas" placeholder="Fin"
+                                    formControlName="finGlob"
+                                    [ngClass]="{'status-danger': finGlob.invalid && (finGlob.dirty || finGlob.touched),'status-success': finGlob.valid}">
+                                <div *ngIf="finGlob.invalid && (finGlob.dirty || finGlob.touched)" class="text-danger">
+                                    <div *ngIf="finGlob.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="porcentaje" class="titulosGModifiers">Porcentaje Incremento</label>
+                                <input nbInput name="porcentaje" type="number" class="cajas"
+                                    placeholder="Porcentaje Incremento" formControlName="porcIncrementoGlob"
+                                    [ngClass]="{'status-danger': porcIncrementoGlob.invalid && (porcIncrementoGlob.dirty || porcIncrementoGlob.touched),'status-success': porcIncrementoGlob.valid}">
+                                <div *ngIf="porcIncrementoGlob.invalid && (porcIncrementoGlob.dirty || porcIncrementoGlob.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="porcIncrementoGlob.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="valor" class="titulosGModifiers">Valor Incremento</label>
+                                <input nbInput name="valor" type="text" class="cajas" placeholder="Valor Incremento"
+                                    formControlName="valIncrementoGlob"
+                                    [ngClass]="{'status-danger': valIncrementoGlob.invalid && (valIncrementoGlob.dirty || valIncrementoGlob.touched),'status-success': valIncrementoGlob.valid}">
+                                <div *ngIf="valIncrementoGlob.invalid && (valIncrementoGlob.dirty || valIncrementoGlob.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="valIncrementoGlob.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="valor" class="titulosGModifiers">Origen Métrica</label>
+                                <input nbInput name="valor" type="text" class="cajas" placeholder="Origen Métrica"
+                                    formControlName="origenMetricaGlob"
+                                    [ngClass]="{'status-danger': origenMetricaGlob.invalid && (origenMetricaGlob.dirty || origenMetricaGlob.touched),'status-success': origenMetricaGlob.valid}">
+                            </div>
+                            <div class="col-md-1" style="margin-top: 65px;margin-left: 30px;">
+                                <button nbButton (click)="addGlobalModifiers()"
+                                    [disabled]="globalModifiersForm.invalid">
+                                    <nb-icon icon="plus-circle" class="icon"></nb-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <table class="table table-striped-table6">
+                                <thead>
+                                    <tr>
+                                        <th>KPI</th>
+                                        <th>Inicio</th>
+                                        <th>Fin</th>
+                                        <th>Porcentaje Incremento</th>
+                                        <th>Valor Incremento</th>
+                                        <th>Origen métrica</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let i of listGlobalModifiers">
+                                    <tr>
+                                        <td>{{i.nameKpi}}</td>
+                                        <td>{{i.Start}}</td>
+                                        <td>{{i.End}}</td>
+                                        <td>{{i.porcentajeIncremento/100 | percent}}</td>
+                                        <td>{{i.valorIncremento | currency}}</td>
+                                        <td>{{i.origenMetrica}}</td>
+                                        <td>
+                                            <nb-icon icon="trash" class="icon" (click)="deleteGlobalModifiers(i)">
+                                            </nb-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <button id="btnClose" name="Cerrar" nbButton
+                        style="margin-left: 10px; margin-right: 165px;margin-top:30px; margin-bottom:5px; float: right;width: 100px;height: 45px;"
+                        (click)="close()">Cerrar</button>
+                    <button id="btnSave" name="Guardar" nbButton
+                        style="float: right; margin-top:30px; margin-right:10px; margin-left:10px; margin-bottom:5px;width: 100px;height: 45px;"
+                        (click)="saveTotalGlobalModifiers()" [disabled]="globalModifiersForm.invalid">Guardar</button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </form>
+
+    <form (submit)="submit()" [formGroup]="unitPaymentForm">
+        <nb-card *ngSwitchCase="'UnitPayment'" class="container6" [nbSpinner]="load" nbSpinnerStatus="primary">
+            <nb-card-body>
+                <label class="tituloPrincipalB">Configuración Pago Unitario</label>
+                <label class="tituloSecundarioB">{{Titulo}}</label>
+                <div class="container">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="kpi" class="titulosPayment">KPI</label>
+                                <nb-select name="kpi" placeholder="Selección KPI" class="cajas"
+                                    formControlName="kpiSeleccionadoUnit">
+                                    <nb-option *ngFor="let k of listKpiName " [value]="k.IdKpi">
+                                        {{k.KPI_Name}}
+                                    </nb-option>
+                                </nb-select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="targetKpi" class="titulosPayment">Unidades</label>
+                                <input nbInput name="targetKpi" type="number" class="cajas" placeholder="Unidades"
+                                    formControlName="UnidadesUnit" [ngClass]="{'status-danger': UnidadesUnit.invalid && (UnidadesUnit.dirty ||
+                            UnidadesUnit.touched),'status-success': UnidadesUnit.valid}">
+                                <div *ngIf="UnidadesUnit.invalid && (UnidadesUnit.dirty || UnidadesUnit.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="UnidadesUnit.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="valorTotal" class="titulosPayment">Valor total</label>
+                                <input name="valorTotal" type="number" class="cajas" nbInput placeholder="Valor total"
+                                    formControlName="valorTotalUnit" [ngClass]="{'status-danger': valorTotalUnit.invalid && (valorTotalUnit.dirty ||
+                            valorTotalUnit.touched),'status-success': valorTotalUnit.valid}">
+                                <div *ngIf="valorTotalUnit.invalid && (valorTotalUnit.dirty || valorTotalUnit.touched)"
+                                    class="text-danger">
+                                    <div *ngIf="valorTotalUnit.errors.pattern">
+                                        Valor no válido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1" style="margin-top: 65px;">
+                                <button nbButton (click)="addUnitPayment()" [disabled]="unitPaymentForm.invalid">
+                                    <nb-icon icon="plus-circle" class="icon"></nb-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <table class="table table-striped-table7">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">KPI</th>
+                                        <th scope="col">Unidades</th>
+                                        <th scope="col">Valor Total</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let i of listUnitPayment">
+                                    <tr>
+                                        <td>{{i.nameKpi}}</td>
+                                        <td>{{i.unidad}}</td>
+                                        <td>{{i.valorTotal | currency}}</td>
+                                        <td>
+                                            <nb-icon icon="trash" class="icon" (click)="deleteUnitPayment(i)"></nb-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <button id="btnClose" name="Cerrar" nbButton
+                        style="margin-left: 10px; margin-right: 185px;margin-top:30px; margin-bottom:5px; float: right;width: 100px;height: 45px;"
+                        (click)="close()">Cerrar</button>
+                    <button id="btnSave" name="Guardar" nbButton
+                        style="margin-left: 10px; margin-right: 10px;margin-top:30px; margin-bottom:5px; float: right;width: 100px;height: 45px;"
+                        (click)="saveTotalGateWays()" [disabled]="gateWaysForm.invalid">Guardar</button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </form>
+</div>

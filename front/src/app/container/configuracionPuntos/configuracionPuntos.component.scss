@@ -1,0 +1,289 @@
+.input{
+    height: 100px;
+    width: 100%;
+}
+
+
+.container{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.titulosBonos{
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 16px;
+    margin-top: 20px;
+    margin-right: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    color: black;
+    display: block;
+}
+
+.titulosGateWays{
+    font-size: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    text-align: left;
+    color: black;
+    display: block;
+}
+
+.titulosThresHolds{
+    font-size: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    text-align: left;
+    color: black;
+    display: block;
+}
+
+
+.titulosModifiers{
+    font-size: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    text-align: left;
+    color: black;
+    display: block;
+}
+
+.titulosGModifiers{
+    font-size: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    text-align: left;
+    color: black;
+    display: block;
+}
+
+.titulosPayment{
+    font-size: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    text-align: left;
+    color: black;
+    display: block;
+}
+
+
+.tituloPrincipal{
+    font-size: 24px;
+    font-family: 'Segoe UI';
+    text-align: center;
+    display: block;
+    color: black;
+}
+
+.tituloSecundario{
+    font-size: 16px;
+    font-family: 'Segoe UI';
+    color: #7F7F7F;
+    display: block;
+    margin-bottom: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+.tituloPrincipalB{
+    font-size: 24px;
+    font-family: 'Segoe UI';
+    text-align: center;
+    display: block;
+    color: black;
+    margin-right: 270px;
+}
+
+.tituloSecundarioB{
+    font-size: 16px;
+    font-family: 'Segoe UI';
+    color: #7F7F7F;
+    display: block;
+    margin-bottom: 25px;
+    margin-left: 5px;
+    margin-right: 270px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.cajas{
+    font-size: 22px;
+    box-sizing: border-box;
+    width: 250px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-right: 15px;
+}
+
+.addButton{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 2px;
+}
+
+.btnButton{
+    float: right;
+    width: 100px;
+    height: 45px;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 30px;
+}
+
+
+.text-danger{
+    margin-left: 5px;
+}
+
+.table-striped-table1{
+    width: 99%;
+    background: #F2F2F2;
+}
+
+.table-striped-table2{
+    width: 78%;
+    background: #F2F2F2;
+    margin-left: 20px;
+}
+
+.table-striped-table3{
+    width: 95%;
+    background: #F2F2F2;
+    margin-left: 18px;
+}
+
+.table-striped-table4{
+    width: 95%;
+    background: #F2F2F2;
+    margin-left: 18px;
+}
+
+.table-striped-table5{
+    width: 100%;
+    background: #F2F2F2;
+}
+
+.table-striped-table6{
+    width: 81%;
+    background: #F2F2F2;
+    margin-left: 20px;
+}
+
+.table-striped-table7{
+    width: 80%;
+    background: #F2F2F2;
+    margin-left: 20px;
+}
+
+thead th {
+    background-color:#780096;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+.table td {
+    font-size: 14px;
+    text-align: center;
+  }
+
+.icon{
+    cursor: pointer;
+}
+
+.container1{
+    height: 440px;
+    width: 800px;
+    margin-bottom: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+}
+
+.container2{
+    height: 440px;
+    width: 1200px;
+    margin-bottom: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+}
+
+.container3{
+    height: 500px;
+    width: 900px;
+    margin-bottom: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+}
+
+.container4{
+    height: 580px;
+    width: 1015px;
+    margin-bottom: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+}
+
+.container5{
+    height: 570px;
+    width: 1150px;
+    margin-bottom: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+}
+
+.container6{
+    height: 480px;
+    width: 1200px;
+    margin-bottom: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+}
+
+
+.orgView {
+    display: grid;
+}
+
+hr.solid {
+    border-top: 3px solid #999;
+}
